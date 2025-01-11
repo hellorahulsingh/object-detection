@@ -24,19 +24,16 @@
    git clone https://github.com/facebookresearch/detectron2.git
    ```
 
-4. Get your own ad image file and replace the current with the one of your choice. Kindly keep the same name:
-   ```bash
-   sample.jpeg
-   ```
-
-5. Install the dependencies:
+4. Install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-6. Run the app:
+5. Run the app:
    ```bash
    python main.py
    ```
+
+6. Provide the path of the image when prompted
 
 7. Final outputs can be seen inside processed directory
