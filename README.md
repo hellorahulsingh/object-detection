@@ -29,9 +29,9 @@
    pip install -r requirements.txt
    ```
 
-5. Run the app:
+5. Run the app by appending path of the file:
    ```bash
-   python main.py sample.jpeg
+   python main.py <sample.jpeg>
    ```
 
 6. Final outputs can be seen inside processed directory
