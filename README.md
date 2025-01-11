@@ -19,20 +19,24 @@
    # On macOS, you may need to prepend the above commands with a few environment variables:
    CC=clang CXX=clang++ ARCHFLAGS="-arch x86_64" python -m pip install ...
    ```
+3. Setup detectron2 models & weight files
+   ```
+   git clone https://github.com/facebookresearch/detectron2.git
+   ```
 
-3. Get your own ad image file and replace the current with the one of your choice. Kindly keep the same name:
+4. Get your own ad image file and replace the current with the one of your choice. Kindly keep the same name:
    ```bash
    sample.jpeg
    ```
 
-3. Install the dependencies:
+5. Install the dependencies:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Run the app:
+6. Run the app:
    ```bash
    python main.py
    ```
 
-5. Final outputs can be seen inside processed directory
+7. Final outputs can be seen inside processed directory
