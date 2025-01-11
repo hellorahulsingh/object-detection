@@ -31,9 +31,7 @@
 
 5. Run the app:
    ```bash
-   python main.py
+   python main.py sample.jpeg
    ```
 
-6. Provide the path of the image when prompted
-
-7. Final outputs can be seen inside processed directory
+6. Final outputs can be seen inside processed directory
