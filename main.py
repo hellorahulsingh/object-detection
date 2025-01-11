@@ -7,25 +7,25 @@ from detectron2.engine import DefaultPredictor
 from detectron2.data import MetadataCatalog
 import svgwrite
 from PIL import Image
+import sys
 
-# Initialize Detectron2 configuration
-cfg = get_cfg()
-cfg.merge_from_file("detectron2/configs/Misc/cascade_mask_rcnn_R_50_FPN_3x.yaml")
-cfg.MODEL.WEIGHTS = "detectron2://Misc/cascade_mask_rcnn_R_50_FPN_3x/144998488/model_final_480dd8.pkl"
-cfg.MODEL.DEVICE = "cpu"  # Change to "cuda" if available
-cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.1  # Adjust confidence threshold
-cfg.TEST.DETECTIONS_PER_IMAGE = 300  # Increase max detections
+def main(image_path):
+    # Initialize Detectron2 configuration
+    cfg = get_cfg()
+    cfg.merge_from_file("detectron2/configs/Misc/cascade_mask_rcnn_R_50_FPN_3x.yaml")
+    cfg.MODEL.WEIGHTS = "detectron2://Misc/cascade_mask_rcnn_R_50_FPN_3x/144998488/model_final_480dd8.pkl"
+    cfg.MODEL.DEVICE = "cpu"  # Change to "cuda" if available
+    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.1  # Adjust confidence threshold
+    cfg.TEST.DETECTIONS_PER_IMAGE = 300  # Increase max detections
 
-# Initialize predictor
-predictor = DefaultPredictor(cfg)
+    # Initialize predictor
+    predictor = DefaultPredictor(cfg)
 
-# Get input file name from the user
-image_path = input("Enter the path to the image file: ").strip()
+    # Check if the file exists
+    if not os.path.isfile(image_path):
+        print(f"Error: File '{image_path}' does not exist.")
+        return
 
-# Check if the file exists
-if not os.path.isfile(image_path):
-    print(f"Error: File '{image_path}' does not exist.")
-else:
     # Read the image
     img = cv2.imread(image_path)
 
@@ -86,3 +86,10 @@ else:
             dwg.save()
 
         print(f"Extracted {len(boxes)} objects and saved as PNG and SVG files in '{output_dir}/'.")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python main.py <image_path>")
+    else:
+        image_path = sys.argv[1]
+        main(image_path)
